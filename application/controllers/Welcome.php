@@ -25,7 +25,7 @@ class Welcome extends Application {
 
         // Get all the completed orders
         $completed = $this->orders->some('status', 'c');
-        
+        //var_dump($completed);
         // Build a multi-dimensional array for reporting
         $orders = array();
         foreach ($completed as $order) {
