@@ -19,6 +19,17 @@ class Orders extends MY_Model {
 
     // calculate the total for an order
     function total($num) {
+        $CI = & get_instance();
+        $items = $CI->orderitems->group($num);
+        $result = 0;
+        if( count($items) > 0 ) {
+            foreach( $items as $item )
+            {
+                $menu = $CI->menu->get($item->item);
+                $result += $item->quantity * $menu->price;
+            }
+            return $result;
+        }
         return 0.0;
     }
 
@@ -30,6 +41,11 @@ class Orders extends MY_Model {
     // cancel an order
     function flush($num) {
         
+    }
+    
+    function some($what, $which) 
+    {
+        parent::some($what, $which);
     }
 
     // validate an order
