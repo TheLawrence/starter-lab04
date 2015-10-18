@@ -25,7 +25,7 @@ class Welcome extends Application {
 
         // Get all the completed orders
         $completed = $this->orders->some('status', 'c');
-        //var_dump($completed);
+       
         // Build a multi-dimensional array for reporting
         $orders = array();
         foreach ($completed as $order) {
@@ -36,7 +36,7 @@ class Welcome extends Application {
             );
             $orders[] = $this1;
         }
-
+        
         // and pass these on to the view
         $this->data['orders'] = $orders;
         
